@@ -20,7 +20,6 @@ private FloatingActionButton floatingActionButton2;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         qr=findViewById(R.id.qr);
-        floatingActionButton2=findViewById(R.id.floatingActionButton2);
         qr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
