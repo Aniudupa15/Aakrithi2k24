@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@drawable/background"
+
+    android:backgroundTintMode="multiply"
+    android:layout_height="match_parent"
+    android:scrollbarSize="25dp">
+
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="403dp"
+        android:layout_height="80dp"
+        android:layout_above="@+id/cardView"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="65dp"
+        android:layout_marginBottom="43dp"
+        android:fontFamily="@font/lovedays"
+        android:text="Aakrithi2k24"
+        android:textAlignment="center"
+        android:textColor="@color/primary"
+        android:textSize="50sp"
+        android:textStyle="bold|italic"
+        tools:ignore="HardcodedText,TextSizeCheck,TextContrastCheck" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="268dp"
+        android:layout_height="262dp"
+        android:layout_above="@+id/qr"
+        android:layout_alignParentStart="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="72dp"
+        android:layout_marginBottom="29dp"
+        app:cardCornerRadius="250dp">
+
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/qr"
+        android:layout_width="229dp"
+        android:layout_height="62dp"
+        android:layout_above="@+id/dress"
+        android:layout_alignParentStart="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="93dp"
+        android:layout_marginBottom="30dp"
+        android:text="DJ Nights"
+        tools:ignore="HardcodedText" />
+
+    <Button
+        android:id="@+id/dress"
+        android:layout_width="229dp"
+        android:layout_height="62dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="96dp"
+        android:layout_marginBottom="106dp"
+        android:text="T-Shirts"
+        tools:ignore="HardcodedText" />
+
+
+</RelativeLayout>
