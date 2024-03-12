@@ -33,11 +33,5 @@ private FloatingActionButton floatingActionButton2;
                 startActivity (new Intent(MainActivity.this,scanner1.class));
             }
         });
-        floatingActionButton2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
     }
 }

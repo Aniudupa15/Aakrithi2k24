@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "311508891090",
+    "project_id": "aakriti-61f86",
+    "storage_bucket": "aakriti-61f86.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:311508891090:android:f119dc55dd0d670d23c40b",
+        "android_client_info": {
+          "package_name": "com.example.aakrithi2k24"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "311508891090-rhdi60vsvl476c7358t7prmdp04i5m2l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBn4WfZSIouXnr6AJt_re69c4GmoEBZFEw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "311508891090-rhdi60vsvl476c7358t7prmdp04i5m2l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
