@@ -5,16 +5,19 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.Toast;
 
 import com.budiyev.android.codescanner.CodeScanner;
 import com.budiyev.android.codescanner.CodeScannerView;
 import com.budiyev.android.codescanner.DecodeCallback;
+import com.google.firebase.database.DatabaseReference;
 import com.google.zxing.Result;
 
 public class scanner1 extends AppCompatActivity {
     private CodeScanner mCodeScanner;
+    DatabaseReference db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +32,7 @@ public class scanner1 extends AppCompatActivity {
                     @Override
                     public void run() {
                         Toast.makeText(scanner1.this, result.getText(), Toast.LENGTH_SHORT).show();
+
                     }
                 });
             }

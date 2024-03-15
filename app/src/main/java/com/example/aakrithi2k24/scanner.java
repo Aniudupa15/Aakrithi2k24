@@ -2,50 +2,58 @@ package com.example.aakrithi2k24;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.budiyev.android.codescanner.CodeScanner;
 import com.budiyev.android.codescanner.CodeScannerView;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
-import java.util.Arrays;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class scanner extends AppCompatActivity {
     private CodeScanner mCodeScanner;
-    private DatabaseReference mDatabase;
+    private TextView textView;
+    FirebaseFirestore db;
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.scanner);
-        @SuppressLint({"MissingInflatedId", "LocalSuppress"}) CodeScannerView scannerView = findViewById(R.id.scannerView);
+        CodeScannerView scannerView = findViewById(R.id.scannerView);
+        textView = findViewById(R.id.textview);
+
+        // Initialize Firestore
+        db = FirebaseFirestore.getInstance();
+
         mCodeScanner = new CodeScanner(this, scannerView);
-        mCodeScanner.setDecodeCallback(result -> {
-            runOnUiThread(() -> {
-                mDatabase = FirebaseDatabase.getInstance().getReference();
-                Task<DataSnapshot> dataSnapshotTask = mDatabase.child("users").child("result").get().addOnCompleteListener(task -> {
-                    if ("registeredEvents" == null) {
-                        Toast.makeText(scanner.this, "registered", Toast.LENGTH_SHORT).show();
-                        Toast.makeText(scanner.this, "good", Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(scanner.this, "bad", Toast.LENGTH_SHORT).show();
-                    }
-                });
+        mCodeScanner.setDecodeCallback(result -> runOnUiThread(() -> {
+            String scannedText = result.getText();
+            Toast.makeText(scanner.this, scannedText, Toast.LENGTH_SHORT).show();
+            DocumentReference document = db.collection("user").document(scannedText);
+            document.get().addOnSuccessListener(documentSnapshot -> {
+                if (documentSnapshot.exists()) {
+                    // Assuming "reg" is a field in your Firestore document
+                    String registration = documentSnapshot.getString("reg");
+                    textView.setText(registration);
+                    Toast.makeText(scanner.this, registration, Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(scanner.this, "Data not found", Toast.LENGTH_SHORT).show();
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(scanner.this, "Failed to fetch data: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
             });
-        });
-        scannerView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mCodeScanner.startPreview();
-            }
-        });
+        }));
+        scannerView.setOnClickListener(view -> mCodeScanner.startPreview());
     }
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -57,5 +65,4 @@ public class scanner extends AppCompatActivity {
         mCodeScanner.releaseResources();
         super.onPause();
     }
-
 }
