@@ -26,17 +26,6 @@
             app:frameThickness="2dp"
             app:frameVerticalBias="0.5"
             app:maskColor="#77000000">
-
-            <TextView
-                android:id="@+id/textview"
-                android:layout_width="250dp"
-                android:layout_height="50dp"
-                android:layout_marginLeft="80dp"
-                android:fontFamily="@font/lovedays"
-                android:textSize="25dp"
-                android:textColor="@color/white"
-                android:textAlignment="center"
-                android:text="TextView" />
         </com.budiyev.android.codescanner.CodeScannerView>
 
     </FrameLayout>

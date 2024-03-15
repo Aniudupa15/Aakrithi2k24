@@ -12,6 +12,7 @@ import com.budiyev.android.codescanner.CodeScanner;
 import com.budiyev.android.codescanner.CodeScannerView;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class scanner extends AppCompatActivity {
@@ -25,7 +26,6 @@ public class scanner extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.scanner);
         CodeScannerView scannerView = findViewById(R.id.scannerView);
-        textView = findViewById(R.id.textview);
 
         // Initialize Firestore
         db = FirebaseFirestore.getInstance();
@@ -33,17 +33,17 @@ public class scanner extends AppCompatActivity {
         mCodeScanner = new CodeScanner(this, scannerView);
         mCodeScanner.setDecodeCallback(result -> runOnUiThread(() -> {
             String scannedText = result.getText();
-            Toast.makeText(scanner.this, scannedText, Toast.LENGTH_SHORT).show();
-            DocumentReference document = db.collection("user").document(scannedText);
+            Toast.makeText(scanner.this, "Please Wait...", Toast.LENGTH_SHORT).show();
+            DocumentReference document = db.collection("users").document(scannedText);
             document.get().addOnSuccessListener(documentSnapshot -> {
-                if (documentSnapshot.exists()) {
-                    // Assuming "reg" is a field in your Firestore document
-                    String registration = documentSnapshot.getString("reg");
-                    textView.setText(registration);
-                    Toast.makeText(scanner.this, registration, Toast.LENGTH_SHORT).show();
+                if (documentSnapshot.contains("registeredEvents")) {
+                    String id =documentSnapshot.getString("aakritiId");
+                    Toast.makeText(scanner.this, id+" Already Registered", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(scanner.this, "Data not found", Toast.LENGTH_SHORT).show();
+                    String id =documentSnapshot.getString("aakritiId");
+                    Toast.makeText(scanner.this, id+" Not Registered", Toast.LENGTH_SHORT).show();
                 }
+
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
