@@ -2,9 +2,8 @@
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:background="@drawable/background"
-
+    android:layout_width="wrap_content"
+    android:background="@drawable/bg"
     android:backgroundTintMode="multiply"
     android:layout_height="match_parent"
     android:scrollbarSize="25dp">
@@ -12,64 +11,53 @@
 
     <TextView
         android:id="@+id/text"
-        android:layout_width="403dp"
-        android:layout_height="80dp"
-        android:layout_above="@+id/cardView"
+        android:layout_width="453dp"
+        android:layout_height="218dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginStart="-28dp"
+        android:layout_marginTop="127dp"
+        android:layout_marginEnd="-14dp"
         android:layout_marginBottom="76dp"
-        android:fontFamily="@font/lovedays"
+        android:fontFamily="@font/Bangers"
         android:text="Aakrithi 2k24"
         android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="50sp"
-        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:textSize="70dp"
         tools:ignore="HardcodedText,TextSizeCheck,TextContrastCheck" />
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
-        android:layout_width="268dp"
-        android:layout_height="262dp"
-        android:layout_above="@+id/qr"
-        android:layout_alignParentStart="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="72dp"
-        android:layout_marginBottom="29dp"
-        app:cardCornerRadius="250dp">
-
-    </androidx.cardview.widget.CardView>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src=""/>
 
     <Button
         android:id="@+id/qr"
+        android:background="@color/white"
         android:layout_width="229dp"
         android:layout_height="62dp"
-        android:layout_above="@+id/dress"
-        android:layout_alignParentStart="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="93dp"
-        android:layout_marginBottom="30dp"
-        android:fontFamily="@font/lovedays"
-        android:lineSpacingExtra="10sp"
-        android:text="DJ Nights"
-        android:textSize="20sp"
-        tools:ignore="HardcodedText" />
-
-    <Button
-        android:id="@+id/dress"
-        android:layout_width="229dp"
-        android:layout_height="62dp"
-        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="96dp"
-        android:layout_marginBottom="106dp"
-        android:fontFamily="@font/lovedays"
-        android:text="T-Shirts"
-        android:textSize="20sp"
-        tools:ignore="HardcodedText" />
+        android:layout_marginEnd="96dp"
+        android:layout_marginBottom="140dp"
+        android:fontFamily="@font/Bangers"
+        android:lineSpacingExtra="10sp"
+        android:text="Scan QR"
+        android:textSize="30sp"
+        tools:ignore="HardcodedText"/>
 
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="412dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        app:srcCompat="@drawable/logo" />
 
 </RelativeLayout>

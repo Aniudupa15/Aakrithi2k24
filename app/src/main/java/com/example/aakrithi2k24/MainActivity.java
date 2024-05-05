@@ -26,12 +26,5 @@ private FloatingActionButton floatingActionButton2;
                 startActivity (new Intent(MainActivity.this,scanner.class));
             }
         });
-        dress=findViewById(R.id.dress);
-        dress.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity (new Intent(MainActivity.this,scanner1.class));
-            }
-        });
     }
 }
